@@ -6,11 +6,11 @@ Aroviq is a process-aware verification layer that guards autonomous AI agents. I
 
 ## Key Features
 
-- 🔌 Plugin System: Register custom Python verifiers for domain-specific checks via the global registry.
-- 🌍 Universal LLM Support: Works with OpenAI, Anthropic, Gemini, Llama 3 (Ollama), and more through LiteLLM.
-- 🛡️ Process-Aware: Independently validates Thoughts, Actions, and Observations with fail-fast routing.
-- 🧠 Structured Steps: `Step.content` accepts text or structured payloads (e.g., JSON tool calls).
-- ⚡ Low Overhead: Only invokes LLMs when needed; lightweight syntax/safety checks run locally.
+-  Plugin System: Register custom Python verifiers for domain-specific checks via the global registry.
+-  Universal LLM Support: Works with OpenAI, Anthropic, Gemini, Llama 3 (Ollama), and more through LiteLLM.
+-  Process-Aware: Independently validates Thoughts, Actions, and Observations with fail-fast routing.
+-  Structured Steps: `Step.content` accepts text or structured payloads (e.g., JSON tool calls).
+-  Low Overhead: Only invokes LLMs when needed; lightweight syntax/safety checks run locally.
 
 ## Installation
 
