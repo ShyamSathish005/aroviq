@@ -27,6 +27,8 @@ ruff = "^0.3.0"
 mypy = "^1.8.0"
 bandit = "^1.7.0"
 hypothesis = "^6.0.0"
+matplotlib = "^3.10.8"
+seaborn = "^0.13.2"
 
 [tool.poetry.scripts]
 aroviq = "aroviq.__main__:main"

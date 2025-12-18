@@ -35,7 +35,7 @@ Aroviq uses a cascading verification pipeline to balance speed and safety:
     *   **Latency**: ~500ms.
     *   **Cost**: Low.
 
-![Benchmark Speedup](assets/benchmark_speedup.png)
+![Benchmark Speedup](assets/benchmark_latency.png)
 *(Tier 0 blocks threats in 0.15ms vs Tier 1 in 1200ms)*
 
 ## Installation
