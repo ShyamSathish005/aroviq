@@ -1,0 +1,21 @@
+{
+    "index": {
+        "title": "Introduction",
+        "type": "page",
+        "display": "hidden"
+    },
+    "docs": {
+        "title": "Documentation",
+        "type": "page"
+    },
+    "benchmarks": {
+        "title": "Benchmarks",
+        "type": "page"
+    },
+    "github": {
+        "title": "GitHub",
+        "type": "page",
+        "href": "https://github.com/ShyamSathish005/aroviq",
+        "newWindow": true
+    }
+}

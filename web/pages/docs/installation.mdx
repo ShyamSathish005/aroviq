@@ -1,0 +1,50 @@
+# Installation & Configuration
+
+## Installation
+
+Aroviq is available on PyPI.
+
+```bash
+pip install aroviq
+```
+
+### Requirements
+*   Python 3.9+
+*   An LLM Provider API Key (Google AI, OpenAI, or Anthropic) for Tier 1 checks.
+
+## Configuration
+
+Aroviq looks for a `aroviq_config.yml` or uses environment variables.
+
+### Environment Variables
+
+```bash
+# Required for Tier 1
+export GOOGLE_API_KEY="AIza..." 
+# OR
+export OPENAI_API_KEY="sk-..."
+
+# Optional
+export AROVIQ_STRICT_MODE="true" # Fail if Tier 1 times out
+export AROVIQ_LOG_LEVEL="INFO"
+```
+
+### Configuring the Engine manually
+
+You can also instantiate the engine directly in Python:
+
+```python
+from aroviq import AroviqEngine, Config
+
+config = Config(
+    tiers={
+        0: ["regex_safety", "pii_fast"],
+        1: ["hallucination_judge"]
+    },
+    thresholds={
+        "risk_score": 0.7
+    }
+)
+
+engine = AroviqEngine(config=config)
+```

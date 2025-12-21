@@ -1,0 +1,43 @@
+# Core Concepts
+
+Aroviq is built on the philosophy of **"Process-Aware Verification"**. We don't just look at the output; we look at the *intent* and the *intermediate steps* of the agent.
+
+## The Hybrid Engine
+
+The core of Aroviq is the `HybridEngine`. It manages the flow of verification through tiers.
+
+<div className="p-4 border border-gray-800 bg-gray-900/50 rounded-lg my-4">
+  **The Waterfall Pipeline:**
+  1. **Input** arrives.
+  2. **Tier 0** checks running (Regex, Keyword, Symbolic).
+     * *If Pass*: Send to Tier 1? (Configurable). OR Return Pass.
+     * *If Block*: **STOP**. Return Block. (Latency cost: micros).
+  3. **Tier 1** checks running (Small LLM, Vector Search).
+     * *If Pass*: Execute function.
+     * *If Block*: **STOP**. Return Block.
+</div>
+
+### Tier 0: The Speed Layer
+*   **Technology**: Regex, Python `ast` analysis, Presidio (PII).
+*   **Latency**: &lt; 1ms.
+*   **Role**: Filter out obvious attacks (prompt injection patterns, SQL syntax, blacklisted PII).
+
+### Tier 1: The Intelligence Layer
+*   **Technology**: Specialized LLMs (Gemini Flash, gpt-4o-mini), Semantic Similarity.
+*   **Latency**: 100ms - 500ms.
+*   **Role**: Detect subtle hallucinations, logical fallacies, and context-dependent safety violations.
+
+## The Verdict
+
+Every check returns a `Verdict` object:
+
+```python
+class Verdict:
+    passed: bool
+    risk_score: float  # 0.0 to 1.0
+    reason: str        # Human-readable explanation
+    tier: int          # 0 or 1
+    latency_ms: float  # Time taken
+```
+
+Aroviq aggregates these. If **any** verifier returns `passed=False`, the entire action is blocked. This is a "Fail-Closed" security model.

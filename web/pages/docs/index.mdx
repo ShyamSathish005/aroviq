@@ -1,0 +1,43 @@
+# Getting Started with Aroviq
+
+**Aroviq** is the `&lt;1ms` runtime firewall for AI Agents. It sits between your agent and the world, filtering out unsafe actions, hallucinations, and security risks in real-time.
+
+It uses a **Hybrid Engine** approach:
+1.  **Tier 0 (Fast)**: Regex, symbolic logic, and deterministic checks. Runs in microseconds.
+2.  **Tier 1 (Smart)**: LLM-based judges for semantic verification. Runs only when necessary.
+
+## Quick Start
+
+### 1. Installation
+
+```bash
+pip install aroviq
+```
+
+### 2. Protect a Function
+
+The easiest way to use Aroviq is the `@guard` decorator. It automatically intercepts calls, verifies the input/output against your safety policy, and blocks unsafe execution.
+
+```python
+from aroviq import guard
+
+@guard(policies=["no_sql_injection", "no_pii_leak"])
+def run_query(user_input: str):
+    # This code will NOT run if Aroviq detects a threat
+    return db.execute(user_input)
+
+# Usage
+run_query("DROP TABLE users") 
+# ^ Raises SecurityException: Blocked by Tier 0 (SQL Injection Pattern)
+```
+
+## Why Aroviq?
+
+Most AI guardrails are too slow (pure LLM judge) or too dumb (regex only). Aroviq combines them into a waterfall pipeline.
+
+| Feature | Aroviq | Typical Guardrails |
+| :--- | :--- | :--- |
+| **Latency** | **&lt;1ms** (Tier 0) | ~500ms+ |
+| **Architecture** | Hybrid (Rule + LLM) | LLM Only |
+| **Integration** | One-line Decorator | Complex Wrapper |
+| **UX** | Silent until block | Often chatty |

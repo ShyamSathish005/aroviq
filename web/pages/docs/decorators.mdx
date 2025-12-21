@@ -1,0 +1,40 @@
+# @guard Decorator
+
+The `@guard` decorator is the main entry point for function-level protection.
+
+## Signature
+
+```python
+def guard(
+    func=None, 
+    *, 
+    policies: List[str] = None, 
+    strict: bool = True
+)
+```
+
+## Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `policies` | `List[str]` | `None` | A list of policy names to enforce (e.g., `["no_pii", "safe_python"]`). If None, uses default safe-defaults. |
+| `strict` | `bool` | `True` | If `True`, raises `SecurityException` on block. If `False`, returns a `Verdict` object instead of executing the function. |
+
+## Examples
+
+### Custom Policies
+
+```python
+@guard(policies=["finance_safety", "no_competitor_mention"])
+def draft_email(subject, body):
+    ...
+```
+
+### Non-Blocking Mode (Audit)
+
+```python
+@guard(strict=False)
+def search_web(query):
+    # This function will always run, but Aroviq will log the verdict
+    ...
+```

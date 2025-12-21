@@ -137,3 +137,8 @@ dmypy.json
 .vscode/
 .idea/
 *.swp
+
+# Node.js
+node_modules/
+.next/
+

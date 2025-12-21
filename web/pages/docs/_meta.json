@@ -1,0 +1,17 @@
+{
+    "index": "Getting Started",
+    "concepts": "Core Concepts",
+    "guides": {
+        "title": "Guides",
+        "type": "separator"
+    },
+    "installation": "Installation",
+    "usage": "Basic Usage",
+    "configuration": "Configuration",
+    "api": {
+        "title": "API Reference",
+        "type": "separator"
+    },
+    "decorators": "@guard Decorator",
+    "engine": "Verification Engine"
+}
