@@ -1,4 +1,4 @@
-# Aroviq
+<img width="2844" height="876" alt="Image" src="https://github.com/user-attachments/assets/f1bb9111-01ab-41b8-83ba-505c50f58f94" />
 
 ### The Hybrid Runtime Firewall for AI Agents.
 
