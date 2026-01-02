@@ -4,6 +4,7 @@ import { Hero } from '../components/Hero'
 import { PipelineDemo } from '../components/PipelineDemo'
 import { Features } from '../components/Features'
 import { SlotText } from '../components/DecryptText'
+import { Footer } from '../components/Footer'
 
 export default function Home() {
     return (
@@ -55,6 +56,7 @@ export default function Home() {
                     </div>
                     <Features />
                 </div>
+                <Footer />
             </div>
         </>
     )
